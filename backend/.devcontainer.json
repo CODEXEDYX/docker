@@ -1,0 +1,8 @@
+{
+  "name": "Backend db",
+  "dockerComposeFile": ["./docker/docker-compose.dev.yaml"],
+  "service": "app",
+  "shutdownAction": "none",
+  "workspaceFolder": "/usr/src/app",
+  "extensions": ["esbenp.prettier-vscode"]
+}

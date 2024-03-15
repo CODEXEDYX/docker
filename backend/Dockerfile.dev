@@ -1,0 +1,19 @@
+# syntax=docker/dockerfile:1
+
+ARG NODE_VERSION=20.11.1
+
+FROM node:${NODE_VERSION}-bookworm-slim AS dev
+
+RUN apt-get update && apt-get install -y --no-install-recommends dumb-init
+
+WORKDIR /usr/src/app
+
+COPY package*.json yarn.lock /usr/src/app/
+
+RUN yarn install && yarn cache clean
+
+COPY . /usr/src/app/
+
+RUN yarn test
+
+EXPOSE 3000
